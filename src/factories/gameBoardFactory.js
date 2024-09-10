@@ -7,8 +7,27 @@ class GameBoard {
         this.hits = [];
     }
 
-
     placeShip(ship, x, y) {
+        const orientation = ship.orientation;
+        
+        if (!this.isValidPlacement(ship, x, y)) {
+          return
+        }
+    
+        const offsetX = (orientation === 'h') ? 1 : 0;
+        const offsetY = (orientation === 'v') ? 1 : 0;
+
+        for (let i = 0; i < ship.length; i++) {
+            const posX = x + i * offsetX;
+            const posY = y + i * offsetY;
+            this.board[posX][posY] = ship;
+        }
+        
+        this.ships.push({ ship, x, y, orientation });
+    }
+
+
+    isValidPlacement(ship, x, y) {
 
     }
 
