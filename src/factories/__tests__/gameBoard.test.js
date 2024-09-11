@@ -102,24 +102,52 @@ describe("GameBoard", () => {
     expect(gameBoard.board[8][8]).toBe(null);
   });
 
+
+  //receiveAttack tests
   it("should record a hit on the ship", () => {
     const gameBoard = new GameBoard();
     const ship = new Ship(3, "h");
     gameBoard.placeShip(ship, 0, 0);
 
-    gameBoard.receiveAttack(0, 0);
+    const result = gameBoard.receiveAttack(0, 0);
 
+    expect(result).toBe(true);
     expect(ship.hits).toContain(0);
   });
 
   it("should record a missed hit", () => {
     const gameBoard = new GameBoard();
+
+    const result = gameBoard.receiveAttack(5, 5);
+
+    expect(result).toBe(false);
+    expect(gameBoard.missedShots[5][5]).toBe(true);
+  });
+
+  it("should sink the ship after all hits", () => {
+    const gameBoard = new GameBoard();
     const ship = new Ship(3, "h");
     gameBoard.placeShip(ship, 0, 0);
 
-    gameBoard.receiveAttack(5, 5);
+    gameBoard.receiveAttack(0, 0);
+    gameBoard.receiveAttack(1, 0);
+    gameBoard.receiveAttack(2, 0);
 
-    expect(gameBoard.hits).toContain([5, 5]);
+    expect(ship.isSunk()).toBe(true);
+  });
+
+  it("should return false for out of bounds attacks", () => {
+    const gameBoard = new GameBoard();
+
+    const result1 = gameBoard.receiveAttack(-1, 0);
+    const result2 = gameBoard.receiveAttack(10, 0);
+    const result3 = gameBoard.receiveAttack(0, -1);
+    const result4 = gameBoard.receiveAttack(0, 10);
+
+    expect(result1).toBe(false);
+    expect(result2).toBe(false);
+    expect(result3).toBe(false);
+    expect(result4).toBe(false);
   });
 
   it("should check if all ships are sunk", () => {

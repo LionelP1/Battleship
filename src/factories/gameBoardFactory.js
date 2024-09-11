@@ -5,8 +5,12 @@ class GameBoard {
     this.board = Array.from({ length: this.size }, () =>
       Array(this.size).fill(null)
     );
+    
+    this.missedShots = Array.from({ length: this.size }, () =>
+      Array(this.size).fill(null)
+    );
+
     this.ships = [];
-    this.hits = [];
   }
 
   placeShip(ship, x, y) {
@@ -49,7 +53,7 @@ class GameBoard {
     return true;
   }
 
-  placeShipRandom(ship) {}
+  placeShipsRandom(ship) {}
 
   receiveAttack(x, y) {}
 
