@@ -17,8 +17,20 @@ describe("GameBoard", () => {
     gameBoard.placeShip(ship, 0, 0);
 
     expect(gameBoard.board[0][0]).toBe(ship);
-    expect(gameBoard.board[0][1]).toBe(ship);
-    expect(gameBoard.board[0][2]).toBe(ship);
+    expect(gameBoard.board[1][0]).toBe(ship);
+    expect(gameBoard.board[2][0]).toBe(ship);
+  });
+
+  it("should place a horizontal ship at a valid position (2nd Case)", () => {
+    const gameBoard = new GameBoard();
+    const ship = new Ship(4, "h");
+
+    gameBoard.placeShip(ship, 6, 0);
+
+    expect(gameBoard.board[6][0]).toBe(ship);
+    expect(gameBoard.board[7][0]).toBe(ship);
+    expect(gameBoard.board[8][0]).toBe(ship);
+    expect(gameBoard.board[9][0]).toBe(ship);
   });
 
   it("should place a vertical ship at a valid position", () => {
@@ -28,9 +40,57 @@ describe("GameBoard", () => {
     gameBoard.placeShip(ship, 0, 0);
 
     expect(gameBoard.board[0][0]).toBe(ship);
-    expect(gameBoard.board[1][0]).toBe(ship);
-    expect(gameBoard.board[2][0]).toBe(ship);
+    expect(gameBoard.board[0][1]).toBe(ship);
+    expect(gameBoard.board[0][2]).toBe(ship);
   });
+
+  it("should place a vertical ship at a valid position (2nd Case)", () => {
+    const gameBoard = new GameBoard();
+    const ship = new Ship(3, "v");
+
+    gameBoard.placeShip(ship, 0, 7);
+
+    expect(gameBoard.board[0][7]).toBe(ship);
+    expect(gameBoard.board[0][8]).toBe(ship);
+    expect(gameBoard.board[0][9]).toBe(ship);
+  });
+
+  //isValidPlacement tests
+  it("should return false for horizontal and vertical ship placed out of bounds", () => {
+    const board = new GameBoard();
+    let shipH = new Ship(5, "h");
+    let shipV = new Ship(5, "v");
+
+    expect(board.isValidPlacement(shipH, 6, 0)).toBe(false);
+  
+    expect(board.isValidPlacement(shipV, 0, 6)).toBe(false);
+  });
+
+  it("should return false for negative ship placement values", () => {
+    const board = new GameBoard();
+    
+    const shipH = new Ship(1, "h");
+    const shipV = new Ship(1, "v");
+
+    expect(board.isValidPlacement(shipH, -1, 0)).toBe(false);
+    expect(board.isValidPlacement(shipH, 0, -1)).toBe(false);
+  
+    expect(board.isValidPlacement(shipV, -1, 0)).toBe(false);
+    expect(board.isValidPlacement(shipV, 0, -1)).toBe(false);
+  });
+
+  it("should return false for ship placement over ship", () => {
+    const board = new GameBoard();
+    const ship1 = new Ship(3, "h");
+    const ship2 = new Ship(2, "h");
+
+    // Place the first ship
+    board.placeShip(ship1, 0, 0);
+
+    // Trying to place another ship in the overlapping area
+    expect(board.isValidPlacement(ship2, 0, 0)).toBe(false);
+});
+
 
   it("should not place a ship if placement is invalid", () => {
     const gameBoard = new GameBoard();
