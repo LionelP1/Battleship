@@ -22,13 +22,35 @@ class GameBoard {
     for (let i = 0; i < ship.length; i++) {
       const posX = x + i * offsetX;
       const posY = y + i * offsetY;
-      this.board[posX][posY] = ship;
+      this.board[posY][posX] = ship;
     }
 
     this.ships.push({ ship, x, y, orientation });
   }
 
-  isValidPlacement(ship, x, y) {}
+  isValidPlacement(ship, x, y) {
+    const { length, orientation } = ship;
+
+    if (orientation === "h") {
+      if (x < 0 || y < 0 || y + length > this.size) return false;
+      for (let i = 0; i < length; i++) {
+        if (this.board[x][y + i] !== null) return false;
+      }
+    } else if (orientation === "v") {
+      // Vertical ship placement
+      if (x < 0 || y < 0 || x + length > this.size) return false;
+      
+      // Check if the ship would overlap with another ship
+      for (let i = 0; i < length; i++) {
+        if (this.board[x + i][y] !== null) return false;
+      }
+    } else {
+      // Invalid orientation
+      return false;
+    }
+    
+    return true;
+  }
 
   placeShipRandom(ship) {}
 
@@ -36,3 +58,5 @@ class GameBoard {
 
   allShipsSunk() {}
 }
+
+export default GameBoard;
