@@ -129,7 +129,7 @@ describe("GameBoard", () => {
     gameBoard.placeShip(ship, 0, 0);
 
     gameBoard.receiveAttack(0, 0);
-    gameBoard.receiveAttack(1, 0);
+    gameBoard.receiveAttack(1, 0);2
     gameBoard.receiveAttack(2, 0);
 
     expect(ship.isSunk()).toBe(true);
