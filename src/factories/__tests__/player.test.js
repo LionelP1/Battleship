@@ -5,11 +5,15 @@ import Ship from "../shipFactory";
 // import shipConfig from "../shipConfig";
 
 describe("Player", () => {
+
+  //initializePlayer
   it("should have the same ships as the info given", () => {
     const player = new Player();
     const shipInfo = [
       { length: 4, orientation: 'h', x: 1, y: 1 },
       { length: 3, orientation: 'v', x: 3, y: 5 },
+      { length: 1, orientation: 'h', x: 3, y: 5 },
+      { length: 5, orientation: 'v', x: 3, y: 5 },
     ];
 
     player.initializePlayer(shipInfo);
@@ -21,6 +25,24 @@ describe("Player", () => {
       expect(ship).toBeDefined();
     });
   });
+
+  it("should place the ship at the correct positions on the gameboard", () => {
+    const player = new Player();
+    const gameboard = player.gameboard;
+    const shipInfo = [
+      { length: 3, orientation: 'h', x: 1, y: 1 },
+    ];
+
+    player.initializePlayer(shipInfo);
+
+    const placedShip = new Ship(3,"h");
+
+    expect(gameboard.board[1][1]).toBe(placedShip);
+    expect(gameboard.board[2][1]).toBe(placedShip);
+    expect(gameboard.board[3][1]).toBe(placedShip);
+
+  });
+
 
 
 });
