@@ -2,12 +2,12 @@ import { describe, it, expect } from "vitest";
 import Player from "../playerFactory";
 import GameBoard from "../gameBoardFactory";
 import Ship from "../shipFactory";
-// import shipConfig from "../shipConfig";
+import shipConfig from "../../config/shipConfig";
 
 describe("Player", () => {
 
   //initializePlayerHuman
-  it("should have the same ships as the info given", () => {
+  it("should have the same ships as the info given for humans", () => {
     const player = new Player();
     const shipInfo = [
       { length: 4, orientation: 'h', x: 1, y: 1 },
@@ -26,7 +26,7 @@ describe("Player", () => {
     });
   });
 
-  it("should place the ship at the correct positions on the gameboard", () => {
+  it("should place the ship at the correct positions on the game board for humans", () => {
     const player = new Player();
     const gameboard = player.gameboard;
     const shipInfo = [
@@ -41,6 +41,33 @@ describe("Player", () => {
     expect(gameboard.board[2][1]).toBe(placedShip);
     expect(gameboard.board[3][1]).toBe(placedShip);
 
+  });
+
+  //initializePlayerBot
+  it("should create the correct number of ships for bots", () => {
+    const player = new Player("BotPlayer", "bot");
+    const totalShips = shipConfig.reduce((total, { count }) => total + count, 0);
+    expect(player.ships).toHaveLength(totalShips);
+  });
+
+  it("should place the correct number of unique ships on the gameboard for bots", () => {
+    const player = new Player("BotPlayer", "bot");
+
+    const totalShips = shipConfig.reduce((total, { count }) => total + count, 0);
+
+    const placedShips = [];
+    for (let row = 0; row < player.gameboard.size; row++) {
+      for (let col = 0; col < player.gameboard.size; col++) {
+        const cell = player.gameboard.board[row][col];
+        if (cell !== null) {
+          // Check if the ship is already added to the placedShips array
+          if (!placedShips.includes(cell)) {
+            placedShips.push(cell);
+          }
+        }
+      }
+    }
+    expect(placedShips.length).toBe(totalShips);
   });
 
 
