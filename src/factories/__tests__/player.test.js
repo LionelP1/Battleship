@@ -6,7 +6,7 @@ import Ship from "../shipFactory";
 
 describe("Player", () => {
 
-  //initializePlayer
+  //initializePlayerHuman
   it("should have the same ships as the info given", () => {
     const player = new Player();
     const shipInfo = [
@@ -16,7 +16,7 @@ describe("Player", () => {
       { length: 5, orientation: 'v', x: 3, y: 5 },
     ];
 
-    player.initializePlayer(shipInfo);
+    player.initializePlayerHuman(shipInfo);
 
     expect(player.ships).toHaveLength(shipInfo.length);
 
@@ -33,7 +33,7 @@ describe("Player", () => {
       { length: 3, orientation: 'h', x: 1, y: 1 },
     ];
 
-    player.initializePlayer(shipInfo);
+    player.initializePlayerHuman(shipInfo);
 
     const placedShip = player.ships[0];
 
