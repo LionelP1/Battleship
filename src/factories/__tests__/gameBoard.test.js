@@ -96,9 +96,8 @@ describe("GameBoard", () => {
     const gameBoard = new GameBoard();
     const ship = new Ship(5, "h");
 
-    const result = gameBoard.placeShip(ship, 8, 8);
+    gameBoard.placeShip(ship, 8, 8);
 
-    expect(result).toBeUndefined();
     expect(gameBoard.board[8][8]).toBe(null);
   });
 
@@ -111,8 +110,8 @@ describe("GameBoard", () => {
 
     const result = gameBoard.receiveAttack(0, 0);
 
+    expect(ship.hits).toContainEqual({ x: 0, y: 0});
     expect(result).toBe(true);
-    expect(ship.hits).toContain(0);
   });
 
   it("should record a missed hit", () => {
@@ -150,20 +149,34 @@ describe("GameBoard", () => {
     expect(result4).toBe(false);
   });
 
-  it("should check if all ships are sunk", () => {
+  //placeShipsRandom
+  it("should place all ships on the board", () => {
+    const shipArray = [
+      new Ship(3, "h"),
+      new Ship(2, "v"),
+      new Ship(4, "h"),
+    ];
+
     const gameBoard = new GameBoard();
-    const ship1 = new Ship(3, "h");
-    const ship2 = new Ship(2, "v");
+    gameBoard.placeShipsRandom(shipArray);
 
-    gameBoard.placeShip(ship1, 0, 0);
-    gameBoard.placeShip(ship2, 5, 5);
+    // Array to keep track of found ships
+    const foundShips = [];
 
-    ship1.hit(0);
-    ship1.hit(1);
-    ship1.hit(2);
-    ship2.hit(0);
-    ship2.hit(1);
+    // Scan the board for ships
+    for (let x = 0; x < gameBoard.size; x++) {
+      for (let y = 0; y < gameBoard.size; y++) {
+        const cell = gameBoard.board[x][y];
+        if (cell !== null && !foundShips.includes(cell)) {
+          foundShips.push(cell);
+        }
+      }
+    }
+    
+    expect(foundShips.length).toBe(shipArray.length);
 
-    expect(gameBoard.allShipsSunk()).toBe(true);
+    shipArray.forEach(ship => {
+      expect(foundShips).toContain(ship);
+    });
   });
 });

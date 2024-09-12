@@ -5,15 +5,15 @@ class Ship {
     this.orientation = orientation; //h = horizontal, v= vertical
   }
 
-  hit(position) {
+
+  hit(x, y) {
     if (
-      this.hits.includes(position) ||
-      position < 0 ||
-      position >= this.length
+      this.hits.some(hit => hit.x === x && hit.y === y) || // Check if coordinates are already hit
+      x < 0 || x >= this.length || y < 0 || y >= this.length
     ) {
       return;
     }
-    this.hits.push(position);
+    this.hits.push({ x, y });
   }
 
   isSunk() {

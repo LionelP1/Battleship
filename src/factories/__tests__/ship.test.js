@@ -10,37 +10,38 @@ describe("Ship", () => {
 
   it("should record a hit at a given position", () => {
     const ship = new Ship(3);
-    ship.hit(1);
-    expect(ship.hits).toContain(1);
+    ship.hit(1, 0);
+    expect(ship.hits).toContainEqual({ x: 1, y: 0 });
     expect(ship.getHitCount()).toBe(1);
   });
 
   it("should not allow hits outside the ship length", () => {
     const ship = new Ship(3);
-    ship.hit(-1);
-    ship.hit(3);
+    ship.hit(-1, 0);
+    ship.hit(3, 0);
+    ship.hit(1, 4);
     expect(ship.hits).toEqual([]);
   });
 
   it("should not record the same position twice", () => {
     const ship = new Ship(3);
-    ship.hit(1);
-    ship.hit(1);
+    ship.hit(1, 0);
+    ship.hit(1, 0);
     expect(ship.hits.length).toBe(1);
   });
 
   it("should sink when all positions are hit", () => {
     const ship = new Ship(3);
-    ship.hit(0);
-    ship.hit(1);
-    ship.hit(2);
+    ship.hit(0, 0);
+    ship.hit(1, 0);
+    ship.hit(2, 0);
     expect(ship.isSunk()).toBe(true);
   });
 
   it("should not be sunk if not all positions are hit", () => {
     const ship = new Ship(3);
-    ship.hit(0);
-    ship.hit(1);
+    ship.hit(0, 0);
+    ship.hit(1, 0);
     expect(ship.isSunk()).toBe(false);
   });
 });

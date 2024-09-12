@@ -5,12 +5,10 @@ class GameBoard {
     this.board = Array.from({ length: this.size }, () =>
       Array(this.size).fill(null)
     );
-    
-    this.missedShots = Array.from({ length: this.size }, () =>
-      Array(this.size).fill(null)
-    );
 
-    this.ships = [];
+    this.missedShots = Array.from({ length: this.size }, () =>
+      Array(this.size).fill(false)
+    );
   }
 
   placeShip(ship, x, y) {
@@ -28,8 +26,6 @@ class GameBoard {
       const posY = y + i * offsetY;
       this.board[posX][posY] = ship;
     }
-
-    this.ships.push({ ship, x, y, orientation });
   }
 
   isValidPlacement(ship, x, y) {
@@ -53,11 +49,40 @@ class GameBoard {
     return true;
   }
 
-  placeShipsRandom(ship) {}
+  placeShipsRandom(shipArray) {
+    shipArray.forEach((ship) => {
+      let placed = false;
 
-  receiveAttack(x, y) {}
+      while (!placed) {
+        const x = Math.floor(Math.random() * this.size);
+        const y = Math.floor(Math.random() * this.size);
 
-  allShipsSunk() {}
+        if (this.isValidPlacement(ship, x, y)) {
+          this.placeShip(ship, x, y);
+          placed = true;
+        }
+      }
+    });
+  }
+
+
+  receiveAttack(x, y) {
+    if (x < 0 || x >= this.size || y < 0 || y >= this.size) {
+      return false;
+    }
+    
+    const ship = this.board[x][y];
+  
+    if (ship !== null) {
+      // Ship Hit
+      ship.hit(x, y);
+      return true;
+    } else {
+      // Ship Missed
+      this.missedShots[x][y] = true;
+      return false;
+    }
+  }
 }
 
 export default GameBoard;
