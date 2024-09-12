@@ -1,0 +1,9 @@
+const shipConfig = [
+  { id: 1, length: 5, count: 1 }, 
+  { id: 2, length: 4, count: 1 },
+  { id: 3, length: 3, count: 2 },
+  { id: 4, length: 3, count: 1 },
+  { id: 5, length: 2, count: 1 }
+];
+
+export default shipConfig;
