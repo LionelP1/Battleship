@@ -35,7 +35,7 @@ describe("Player", () => {
 
     player.initializePlayer(shipInfo);
 
-    const placedShip = new Ship(3,"h");
+    const placedShip = player.ships[0];
 
     expect(gameboard.board[1][1]).toBe(placedShip);
     expect(gameboard.board[2][1]).toBe(placedShip);

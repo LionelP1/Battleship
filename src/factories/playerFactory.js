@@ -8,10 +8,14 @@ class Player {
     this.gameboard = new GameBoard();
   }
 
-	initializePlayer(shipInfo) {
+  initializePlayer(shipInfo) {
+    shipInfo.forEach(({ length, orientation, x, y }) => {
+      const ship = new Ship(length, orientation);
+      this.ships.push(ship);
 
-
-	}
+      this.gameboard.placeShip(ship, x, y);
+    });
+  }
 
 
 
