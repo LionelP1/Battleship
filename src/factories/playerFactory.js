@@ -55,6 +55,42 @@ class Player {
   }
 
 
+  attack(x, y, opponentGameboard) {
+    if (this.hasAlreadyHit(x, y)) return;
+    opponentGameboard.receiveAttack(x, y);
+  }
+
+  randomAttack(opponentGameboard) {
+    let x, y;
+  
+    do {
+      x = Math.floor(Math.random() * opponentGameboard.size);
+      y = Math.floor(Math.random() * opponentGameboard.size);
+    } while (!this.checkAttackValid(x, y, opponentGameboard));
+  
+    this.attack(x, y, opponentGameboard);
+  }
+
+  checkAttackValid(x, y, gameboard) {
+    // Check if coordinates are within bounds
+    if (x < 0 || x >= gameboard.size || y < 0 || y >= gameboard.size) {
+      return false;
+    }
+  
+    // Check if the location has already been attacked
+    if (gameboard.attackLocations[x][y]) {
+      return false;
+    }
+  
+    // Check if every location has been hit
+    const hasUnattackedLocation = gameboard.attackLocations.flat().includes(false);
+    if (!hasUnattackedLocation) {
+      return false;
+    }
+    return true;
+  }
+
+
 }
 
 export default Player;

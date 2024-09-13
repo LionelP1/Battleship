@@ -120,7 +120,7 @@ describe("GameBoard", () => {
     const result = gameBoard.receiveAttack(5, 5);
 
     expect(result).toBe(false);
-    expect(gameBoard.missedShots[5][5]).toBe(true);
+    expect(gameBoard.attackLocations[5][5]).toBe(true);
   });
 
   it("should sink the ship after all hits", () => {

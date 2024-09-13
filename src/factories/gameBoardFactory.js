@@ -6,7 +6,7 @@ class GameBoard {
       Array(this.size).fill(null)
     );
 
-    this.missedShots = Array.from({ length: this.size }, () =>
+    this.attackLocations = Array.from({ length: this.size }, () =>
       Array(this.size).fill(false)
     );
   }
@@ -66,7 +66,8 @@ class GameBoard {
   }
 
   receiveAttack(x, y) {
-    if (x < 0 || x >= this.size || y < 0 || y >= this.size) {
+    // Check if coordinates are within bounds and have not been attacked
+    if (x < 0 || x >= this.size || y < 0 || y >= this.size || this.attackLocations[x][y]) {
       return false;
     }
     
@@ -75,10 +76,11 @@ class GameBoard {
     if (ship !== null) {
       // Ship Hit
       ship.hit(x, y);
+      this.attackLocations[x][y] = true;
       return true;
     } else {
       // Ship Missed
-      this.missedShots[x][y] = true;
+      this.attackLocations[x][y] = true;
       return false;
     }
   }
