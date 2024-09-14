@@ -1,46 +1,37 @@
 import React from 'react';
-import '../../styles/grid.css';
+import '../../grid.css';
 
-const Grid = ({ onClick = () => {} }) => {
-  const gridSize = 10;
-  let cellId = 1; // Initialize counter
-
-  // Cell component defined inside Grid component
-  const Cell = ({ row, col, onClick }) => {
-    return (
-      <div
-        className="cell"
-        onClick={() => onClick(row, col)}
-        data-row={row}
-        data-col={col}
-      >
-        {row},{col}
-      </div>
-    );
-  };
-
-  // Generate grid with rows and columns
-  const cells = [];
-  for (let row = 1; row <= gridSize; row++) {
-    for (let col = 1; col <= gridSize; col++) {
-      cells.push(
-        <Cell
-          key={cellId}
-          row={row}
-          col={col}
-          onClick={onClick}
-        />
-      );
-      cellId++;
-    }
-  }
+const GameGrid = ({ player, onClick }) => {
+  const { board, attackLocations } = player.gameboard;
+  const isBot = (player.type === 'bot');
 
   return (
     <div className="grid">
-      {cells}
+      {board.map((row, x) =>
+        row.map((cell, y) => {
+          const isHit = attackLocations[x][y];
+          const hasShip = (cell !== null);
+
+          const cellClasses = ['cell'];
+          if (isHit) {
+            cellClasses.push(hasShip ? 'hit' : 'miss');
+          } else if (!isBot && hasShip) {
+            cellClasses.push('ship');
+          }
+
+          return (
+            <div
+              key={`${x},${y}`}
+              className={cellClasses.join(' ')}
+              onClick={() => onClick(x, y)}
+            >
+              {x},{y}
+            </div>
+          );
+        })
+      )}
     </div>
   );
 };
 
-export default Grid;
-
+export default GameGrid;

@@ -8,11 +8,43 @@
   
 
   .cell {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #af2d2d;
-    background-color: #9a9292;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    background-color: #eef;
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+  .ship {
+    background-color: #12348f;
+  }
+  
+  .hit::after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: green;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+  
+  .miss::after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
   }
   
