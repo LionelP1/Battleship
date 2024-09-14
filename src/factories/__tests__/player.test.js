@@ -5,42 +5,20 @@ import Ship from "../shipFactory";
 import shipConfig from "../../config/shipConfig";
 
 describe("Player", () => {
-
-  //initializePlayerHuman
-  it("should have the same ships as the info given for humans", () => {
+  //placeShip
+  it("should correctly place a ship on the game board", () => {
     const player = new Player();
-    const shipInfo = [
-      { length: 4, orientation: 'h', x: 1, y: 1 },
-      { length: 3, orientation: 'v', x: 3, y: 5 },
-      { length: 1, orientation: 'h', x: 3, y: 5 },
-      { length: 5, orientation: 'v', x: 3, y: 5 },
-    ];
+    player.placeShip(3, "h", 2, 2);
 
-    player.initializePlayerHuman(shipInfo);
-
-    expect(player.ships).toHaveLength(shipInfo.length);
-
-    shipInfo.forEach(({ length, orientation }) => {
-      const ship = player.ships.find((ship) => (ship.length === length) && (ship.orientation === orientation));
-      expect(ship).toBeDefined();
-    });
-  });
-
-  it("should place the ship at the correct positions on the game board for humans", () => {
-    const player = new Player();
     const gameboard = player.gameboard;
-    const shipInfo = [
-      { length: 3, orientation: 'h', x: 1, y: 1 },
-    ];
-
-    player.initializePlayerHuman(shipInfo);
-
     const placedShip = player.ships[0];
 
-    expect(gameboard.board[1][1]).toBe(placedShip);
-    expect(gameboard.board[2][1]).toBe(placedShip);
-    expect(gameboard.board[3][1]).toBe(placedShip);
+    expect(gameboard.board[2][2]).toBe(placedShip);
+    expect(gameboard.board[3][2]).toBe(placedShip);
+    expect(gameboard.board[4][2]).toBe(placedShip);
 
+    expect(player.ships).toHaveLength(1);
+    expect(player.ships[0].length).toBe(3);
   });
 
   //initializePlayerBot

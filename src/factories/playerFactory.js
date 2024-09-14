@@ -3,29 +3,21 @@ import Ship from "./shipFactory";
 import shipConfig from "../config/shipConfig";
 
 class Player {
-  constructor(name = "Captain", type = "human" , shipInfo = null, boardSize = 10) {
+  constructor(name = "Captain", type = "human", boardSize = 10) {
     this.name = name;
     this.ships = [];
     this.gameboard = new GameBoard(boardSize);
     this.type = type;
 
-    this.initializePlayer(shipInfo);
-  }
-
-  initializePlayer(shipInfo) {
-    if (this.type === 'human' && shipInfo) {
-      this.initializePlayerHuman(shipInfo);
-    } else if (this.type === 'bot') {
+    if (this.type === 'bot') {
       this.initializePlayerBot();
     }
   }
 
-  initializePlayerHuman(shipInfo) {
-    shipInfo.forEach(({ length, orientation, x, y }) => {
-      const ship = new Ship(length, orientation);
-      this.ships.push(ship);
-      this.gameboard.placeShip(ship, x, y);
-    });
+  placeShip(length, orientation, x, y) {
+    const ship = new Ship(length, orientation);
+    this.gameboard.placeShip(ship, x, y);
+    this.ships.push(ship); 
   }
 
   initializePlayerBot() {
