@@ -84,6 +84,18 @@ class GameBoard {
       return false;
     }
   }
+
+  clearBoard() {
+    // Reset the board to initial state with all cells set to null
+    this.board = Array.from({ length: this.size }, () =>
+      Array(this.size).fill(null)
+    );
+
+    // Reset attack locations to initial state with all cells set to false
+    this.attackLocations = Array.from({ length: this.size }, () =>
+      Array(this.size).fill(false)
+    );
+  }
 }
 
 export default GameBoard;

@@ -82,6 +82,15 @@ class Player {
     return true;
   }
 
+  resetPlayer() {
+    this.ships = [];
+    this.gameboard.clearBoard();
+
+    if (this.type === 'bot') {
+      this.initializePlayerBot();
+    }
+  }
+
 
 }
 
