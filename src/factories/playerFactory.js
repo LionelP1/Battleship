@@ -37,7 +37,7 @@ class Player {
         const x = Math.floor(Math.random() * this.gameboard.size);
         const y = Math.floor(Math.random() * this.gameboard.size);
   
-        if (this.gameboard.isValidPlacement(ship, x, y)) {
+        if (this.gameboard.isValidPlacement(ship.length, ship.orientation, x, y)) {
           this.gameboard.placeShip(ship, x, y);
           this.ships.push(ship);
           placed = true;

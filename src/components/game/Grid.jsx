@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../grid.css';
 
-const GameGrid = ({ player, onClick }) => {
+const Grid = ({ player, onClick }) => {
   const { board, attackLocations } = player.gameboard;
   const isBot = (player.type === 'bot');
 
@@ -34,4 +34,4 @@ const GameGrid = ({ player, onClick }) => {
   );
 };
 
-export default GameGrid;
+export default Grid;

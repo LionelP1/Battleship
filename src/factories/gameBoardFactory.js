@@ -1,36 +1,103 @@
-import React from 'react';
-import '../../grid.css';
+import Ship from "./shipFactory";
 
-const GameGrid = ({ player, onClick }) => {
-  const { board, attackLocations } = player.gameboard;
+class GameBoard {
+  constructor(size = 10) {
+    this.size = size;
+    //Generates 2D, 10x10 board with each cell set to null
+    this.board = Array.from({ length: this.size }, () =>
+      Array(this.size).fill(null)
+    );
 
-  return (
-    <div className="grid">
-      {board.map((row, x) =>
-        row.map((cell, y) => {
-          const isHit = attackLocations[x][y];
-          const hasShip = (cell !== null);
+    this.attackLocations = Array.from({ length: this.size }, () =>
+      Array(this.size).fill(false)
+    );
+  }
 
-          const cellClasses = ['cell'];
-          if (isHit) {
-            cellClasses.push(hasShip ? 'hit' : 'miss');
-          } else if (hasShip) {
-            cellClasses.push('');
-          }
+  placeShip(ship, x, y) {
+    if (!this.isValidPlacement(ship.length, ship.orientation, x, y)) {
+      return;
+    }
 
-          return (
-            <div
-              key={`${x},${y}`}
-              className={cellClasses.join(' ')}
-              onClick={() => onClick(x, y)}
-            >
-              {x},{y}
-            </div>
-          );
-        })
-      )}
-    </div>
-  );
-};
+    const orientation = ship.orientation;
 
-export default GameGrid;
+    const offsetX = orientation === "h" ? 1 : 0;
+    const offsetY = orientation === "v" ? 1 : 0;
+
+    for (let i = 0; i < ship.length; i++) {
+      const posX = x + i * offsetX;
+      const posY = y + i * offsetY;
+      this.board[posX][posY] = ship;
+    }
+  }
+
+
+  isValidPlacement(shipLength, shipOrientation, x, y) {
+
+    if (shipOrientation === "h") {
+      if (x < 0 || y < 0 || x + shipLength > this.size || y >= this.size) return false;
+
+      for (let i = 0; i < shipLength; i++) {
+        if (this.board[x + i][y] !== null) return false;
+      }
+    } else if (shipOrientation === "v") {
+      if (x < 0 || y < 0 || y + shipLength > this.size || x >= this.size) return false;
+
+      for (let i = 0; i < shipLength; i++) {
+        if (this.board[x][y + i] !== null) return false;
+      }
+    } else {
+      return false;
+    }
+    return true;
+  }
+
+  placeShipsRandom(shipArray) {
+    shipArray.forEach((ship) => {
+      let placed = false;
+
+      while (!placed) {
+        const x = Math.floor(Math.random() * this.size);
+        const y = Math.floor(Math.random() * this.size);
+
+        if (this.isValidPlacement(ship.length, ship.orientation, x, y)) {
+          this.placeShip(ship, x, y);
+          placed = true;
+        }
+      }
+    });
+  }
+
+  receiveAttack(x, y) {
+    // Check if coordinates are within bounds and have not been attacked
+    if (x < 0 || x >= this.size || y < 0 || y >= this.size || this.attackLocations[x][y]) {
+      return false;
+    }
+
+    const ship = this.board[x][y];
+
+    if (ship !== null) {
+      // Ship Hit
+      ship.hit(x, y);
+      this.attackLocations[x][y] = true;
+      return true;
+    } else {
+      // Ship Missed
+      this.attackLocations[x][y] = true;
+      return false;
+    }
+  }
+
+  clearBoard() {
+    // Reset the board to initial state with all cells set to null
+    this.board = Array.from({ length: this.size }, () =>
+      Array(this.size).fill(null)
+    );
+
+    // Reset attack locations to initial state with all cells set to false
+    this.attackLocations = Array.from({ length: this.size }, () =>
+      Array(this.size).fill(false)
+    );
+  }
+}
+
+export default GameBoard;

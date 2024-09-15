@@ -61,9 +61,9 @@ describe("GameBoard", () => {
     let shipH = new Ship(5, "h");
     let shipV = new Ship(5, "v");
 
-    expect(board.isValidPlacement(shipH, 6, 0)).toBe(false);
+    expect(board.isValidPlacement(shipH.length, shipH.orientation, 6, 0)).toBe(false);
   
-    expect(board.isValidPlacement(shipV, 0, 6)).toBe(false);
+    expect(board.isValidPlacement(shipV.length, shipV.orientation, 0, 6)).toBe(false);
   });
 
   it("should return false for negative ship placement values", () => {
@@ -72,11 +72,11 @@ describe("GameBoard", () => {
     const shipH = new Ship(1, "h");
     const shipV = new Ship(1, "v");
 
-    expect(board.isValidPlacement(shipH, -1, 0)).toBe(false);
-    expect(board.isValidPlacement(shipH, 0, -1)).toBe(false);
+    expect(board.isValidPlacement(shipH.length, shipH.orientation, -1, 0)).toBe(false);
+    expect(board.isValidPlacement(shipH.length, shipH.orientation, 0, -1)).toBe(false);
   
-    expect(board.isValidPlacement(shipV, -1, 0)).toBe(false);
-    expect(board.isValidPlacement(shipV, 0, -1)).toBe(false);
+    expect(board.isValidPlacement(shipV.length, shipV.orientation, -1, 0)).toBe(false);
+    expect(board.isValidPlacement(shipV.length, shipV.orientation, 0, -1)).toBe(false);
   });
 
   it("should return false for ship placement over ship", () => {
@@ -87,8 +87,8 @@ describe("GameBoard", () => {
     // Place the first ship
     board.placeShip(ship1, 0, 0);
 
-    // Trying to place another ship in the overlapping area
-    expect(board.isValidPlacement(ship2, 0, 0)).toBe(false);
+  
+    expect(board.isValidPlacement(ship2.length, ship2.orientation, 0, 0)).toBe(false);
 });
 
 
