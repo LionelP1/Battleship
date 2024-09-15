@@ -1,0 +1,39 @@
+.ship-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px;
+}
+
+.ship-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.ship-count {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.ship {
+  display: flex;
+}
+
+.ship-container.selected {
+  background-color: #d0e0ff; 
+  border-color: #0033cc;
+}
+
+.ship-square {
+  width: 30px;
+  height: 30px;
+  background-color: #2965dd;
+  border: 3px solid #00247f;
+  box-sizing: border-box;
+}
+
+.ship-square:not(:last-child) {
+  margin-right: -3px;
+}
