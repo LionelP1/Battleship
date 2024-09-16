@@ -49,10 +49,17 @@ const ShipPlacement = () => {
     setOrientation('h');
   };
 
+  const allShipsPlaced = Object.values(availableShips).every(count => count === 0);
+
   return (
     <div className="ship-placement">
       <ShipButtons selectedShip={selectedShip} setSelectedShip={setSelectedShip} availableShips={availableShips} />
-      <PlaceShipsButtons orientation={orientation} setOrientation={setOrientation} handleClear={handleClear} />
+      <PlaceShipsButtons
+        orientation={orientation}
+        setOrientation={setOrientation}
+        handleClear={handleClear}
+        allShipsPlaced={allShipsPlaced}
+      />
 
       <div className="info">
         <p>Info</p>
