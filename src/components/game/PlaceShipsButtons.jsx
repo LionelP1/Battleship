@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/placeshipbuttons.css';
 
-const PlaceShipsButtons = ({ orientation, setOrientation }) => {
+const PlaceShipsButtons = ({ orientation, setOrientation, handleClear }) => {
 
   const toggleOrientation = () => {
     setOrientation((prevOrientation) => 
@@ -14,7 +14,7 @@ const PlaceShipsButtons = ({ orientation, setOrientation }) => {
         {orientation === 'h' ? 'Horizontal ↔' : 'Vertical ↕'}
       </button>
 
-      <button className="clear-btn" onClick={}>Clear</button>
+      <button className="clear-btn" onClick={handleClear}>Clear</button>
       <button className="start-btn">Start</button>
     </div>
   );
