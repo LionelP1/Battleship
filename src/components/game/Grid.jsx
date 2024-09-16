@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/grid.css'
+import '../../styles/grid.css';
 
 const Grid = ({ player, onClick }) => {
   const { board, attackLocations } = player.gameboard;
@@ -7,8 +7,9 @@ const Grid = ({ player, onClick }) => {
 
   return (
     <div className="grid">
-      {board.map((row, x) =>
-        row.map((cell, y) => {
+      {board[0].map((_, y) => (  // Iterate over columns
+        board.map((row, x) => {  // Iterate over rows
+          const cell = row[y];
           const isHit = attackLocations[x][y];
           const hasShip = (cell !== null);
 
@@ -25,11 +26,11 @@ const Grid = ({ player, onClick }) => {
               className={cellClasses.join(' ')}
               onClick={() => onClick(x, y)}
             >
-              {x},{y}
+              {`${x},${y}`}
             </div>
           );
         })
-      )}
+      ))}
     </div>
   );
 };

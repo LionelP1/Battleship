@@ -1,50 +1,29 @@
-
 .grid {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    border:black solid 4px;
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(10, 40px);
+  grid-template-rows: repeat(10, 40px);
+  gap: 2px;
+}
 
-  .cell {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #ccc;
-    display: inline-block;
-    background-color: #eef;
-    box-sizing: border-box;
-    position: relative;
-  }
-  
-  .ship {
-    background-color: #12348f;
-  }
-  
-  .hit::after {
-    content: '';
-    display: block;
-    width: 8px;
-    height: 8px;
-    background-color: green;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-  }
-  
-  .miss::after {
-    content: '';
-    display: block;
-    width: 8px;
-    height: 8px;
-    background-color: red;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-  }
-  
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.5s;
+}
+
+.cell.hit {
+  background-color: red;
+}
+
+.cell.miss {
+  background-color: blue;
+}
+
+.cell.ship {
+  background-color: rgb(20, 19, 19);
+}
