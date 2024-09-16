@@ -2,7 +2,7 @@ import React from 'react';
 import shipConfig from '../../config/shipConfig';
 import '../../styles/shipbuttons.css';
 
-const ShipButtons = ({ selectedShip, setSelectedShip }) => {
+const ShipButtons = ({ selectedShip, setSelectedShip, availableShips }) => {
   return (
     <div className="ship-grid">
       {shipConfig.map((ship) => (
@@ -14,7 +14,7 @@ const ShipButtons = ({ selectedShip, setSelectedShip }) => {
           <div className="ship">
             {renderShipSquares(ship.length)}
           </div>
-          <div className="ship-count">x {ship.count}</div>
+          <div className="ship-count">x {availableShips[ship.id]}</div>
         </div>
       ))}
     </div>

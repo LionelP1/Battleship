@@ -43,7 +43,7 @@ const ShipPlacement = () => {
 
   return (
     <div className="ship-placement">
-      <ShipButtons selectedShip={selectedShip} setSelectedShip={setSelectedShip} />
+      <ShipButtons selectedShip={selectedShip} setSelectedShip={setSelectedShip} availableShips={availableShips} />
       <PlaceShipsButtons orientation={orientation} setOrientation={setOrientation} />
 
       <div className="info">
