@@ -14,7 +14,7 @@ const PlaceShipsButtons = ({ orientation, setOrientation }) => {
         {orientation === 'h' ? 'Horizontal ↔' : 'Vertical ↕'}
       </button>
 
-      <button className="clear-btn">Clear</button>
+      <button className="clear-btn" onClick={}>Clear</button>
       <button className="start-btn">Start</button>
     </div>
   );
