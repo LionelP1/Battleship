@@ -8,8 +8,8 @@ const ShipButtons = ({ selectedShip, setSelectedShip }) => {
       {shipConfig.map((ship) => (
         <div
           key={ship.id}
-          className={`ship-container ${selectedShip === ship.id ? 'selected' : ''}`}
-          onClick={() => setSelectedShip(ship.id)}
+          className={`ship-container ${selectedShip && (selectedShip.id === ship.id) ? 'selected' : ''}`}
+          onClick={() => setSelectedShip(ship)}
         >
           <div className="ship">
             {renderShipSquares(ship.length)}

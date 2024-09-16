@@ -11,7 +11,7 @@ const PlaceShipsButtons = ({ orientation, setOrientation }) => {
   return (
     <div className="button-grid">
       <button className="orientation-btn" onClick={toggleOrientation}>
-        {orientation === 'h' ? 'Vertical ↕' : 'Horizontal ↔'}
+        {orientation === 'h' ? 'Horizontal ↔' : 'Vertical ↕'}
       </button>
 
       <button className="clear-btn">Clear</button>

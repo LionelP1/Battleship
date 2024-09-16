@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../grid.css';
+import '../../styles/grid.css'
 
 const Grid = ({ player, onClick }) => {
   const { board, attackLocations } = player.gameboard;
