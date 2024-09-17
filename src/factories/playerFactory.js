@@ -49,7 +49,6 @@ class Player {
 
   attack(x, y, opponentGameboard) {
     if (!this.checkAttackValid(x, y, opponentGameboard)) {return};
-    this.gameboard.attackLocations[x][y] = true;
     opponentGameboard.receiveAttack(x, y);
   }
 
@@ -71,7 +70,7 @@ class Player {
     }
   
     // Check if the location has already been attacked
-    if (this.gameboard.attackLocations[x][y]) {
+    if (gameboard.attackLocations[x][y]) {
       return false;
     }
 

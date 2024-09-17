@@ -12,9 +12,6 @@ const Game = ({ player }) => {
   const [playerState, setPlayerState] = useState(player);
 	const [gameStatus, setGameStatus] = useState('ongoing');
 
-  const botShipBoard = JSON.parse(JSON.stringify(bot.gameboard.board))
-  const playerShipBoard = JSON.parse(JSON.stringify(playerState.gameboard.board))
-
 	const checkGameOver = () => {
     if (playerState.allShipsSunk()) {
       setGameStatus('botWon');
@@ -27,6 +24,8 @@ const Game = ({ player }) => {
     if (!playerState.checkAttackValid(x, y, bot.gameboard)) return;
 		const updatedBot = bot.copy();
 		const updatedPlayer = playerState.copy();
+
+    updatedPlayer.attack(x, y, bot.gameboard);
 
     setBot(updatedBot);
     setPlayerState(updatedPlayer);
@@ -53,7 +52,7 @@ const Game = ({ player }) => {
       <div className="game-boards">
         <div className="player-board">
           <h2>{player.name}'s Board</h2>
-          <Grid player={player} onClick={()=>{}} />
+          <Grid player={playerState} onClick={()=>{}} />
 					<p>Player: {JSON.stringify(playerState)}</p>
         </div>
 

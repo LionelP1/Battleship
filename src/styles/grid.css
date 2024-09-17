@@ -26,5 +26,6 @@
 }
 
 .cell.ship {
-  background-color: rgb(20, 19, 19);
+  /* background-color: rgb(20, 19, 19); */
+  border: solid green 2px;
 }
