@@ -3,7 +3,7 @@ import Ship from "./shipFactory";
 import shipConfig from "../config/shipConfig";
 
 class Player {
-  constructor(name = "Captain", type = "human", boardSize = 10) {
+  constructor(name = "Player", type = "human", boardSize = 10) {
     this.name = name;
     this.ships = [];
     this.gameboard = new GameBoard(boardSize);

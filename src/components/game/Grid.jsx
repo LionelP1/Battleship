@@ -3,7 +3,7 @@ import '../../styles/grid.css';
 
 const Grid = ({ player, onClick }) => {
   const { board, attackLocations } = player.gameboard;
-  const isBot = (player.type === 'bot');
+  const isBot = (player.type === 'botq');
 
   return (
     <div className="grid">
