@@ -7,12 +7,13 @@ class Ship {
 
 
   hit(x, y) {
-    if (
-      this.hits.some(hit => hit.x === x && hit.y === y) || // Check if coordinates are already hit
-      x < 0 || x >= this.length || y < 0 || y >= this.length
-    ) {
-      return;
-    }
+    // if (
+    //   this.hits.some(hit => hit.x === x && hit.y === y) ||
+    //   x < 0 || x >= this.length || y < 0 || y >= this.length
+    // ) {
+    //   return;
+    // }
+    console.log('hit');
     this.hits.push({ x, y });
   }
 
@@ -22,10 +23,6 @@ class Ship {
 
   getHitCount() {
     return this.hits.length;
-  }
-
-  copy() {
-    return new Ship(this.length, this.orientation);
   }
 }
 

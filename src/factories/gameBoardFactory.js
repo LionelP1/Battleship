@@ -72,8 +72,6 @@ class GameBoard {
     if (x < 0 || x >= this.size || y < 0 || y >= this.size) {
       return false;
     }
-
-    //Add attack to attack locations
     this.attackLocations[x][y] = true;
 
     const ship = this.board[x][y];
@@ -81,6 +79,7 @@ class GameBoard {
     if (ship !== null) {
       // Ship Hit
       ship.hit(x, y);
+      console.log({ship});
       return true;
     } else {
       // Ship Missed
@@ -99,19 +98,6 @@ class GameBoard {
       Array(this.size).fill(false)
     );
   }
-
-  copy() {
-    const newGameBoard = new GameBoard(this.size);
-
-    // Deep copy the board with Ship instances
-    newGameBoard.board = this.board.map(row => row.map(ship => ship ? ship.copy() : null));
-
-    // Deep copy attackLocations
-    newGameBoard.attackLocations = JSON.parse(JSON.stringify(this.attackLocations));
-
-    return newGameBoard;
-  }
-
 }
 
 export default GameBoard;

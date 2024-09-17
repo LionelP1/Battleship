@@ -20,12 +20,21 @@ const Game = ({ player }) => {
     }
   };
 
+  const testFunction = () => {
+    // Create a copy of playerState
+    const updatePlayer = playerState.copy();
+    updatePlayer.ships[0].hit(0,0);
+    console.log(JSON.stringify(updatePlayer.ships));
+  }
+  
+
   const handlePlayerAttack = (x, y) => {
     if (!playerState.checkAttackValid(x, y, bot.gameboard)) return;
 		const updatedBot = bot.copy();
 		const updatedPlayer = playerState.copy();
 
     updatedPlayer.attack(x, y, bot.gameboard);
+
 
     setBot(updatedBot);
     setPlayerState(updatedPlayer);
@@ -49,6 +58,7 @@ const Game = ({ player }) => {
   return (
     <div className="game">
       <h1>Battleship Game</h1>
+      <p>{gameStatus}</p>
       <div className="game-boards">
         <div className="player-board">
           <h2>{player.name}'s Board</h2>
@@ -68,5 +78,3 @@ const Game = ({ player }) => {
 };
 
 export default Game;
-
-
