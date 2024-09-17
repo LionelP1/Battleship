@@ -16,7 +16,7 @@ const initializeShips = () => {
 };
 
 
-const ShipPlacement = () => {
+const ShipPlacement = ({ onStartGame }) => {
   const [selectedShip, setSelectedShip] = useState(null);
   const [orientation, setOrientation] = useState('h');
   const [availableShips, setAvailableShips] = useState(initializeShips); 
@@ -51,6 +51,12 @@ const ShipPlacement = () => {
 
   const allShipsPlaced = Object.values(availableShips).every(count => count === 0);
 
+  const handleStart = () => {
+    if (allShipsPlaced) {
+      onStartGame(player);
+    }
+  };
+
   return (
     <div className="ship-placement">
       <ShipButtons selectedShip={selectedShip} setSelectedShip={setSelectedShip} availableShips={availableShips} />
@@ -59,6 +65,7 @@ const ShipPlacement = () => {
         setOrientation={setOrientation}
         handleClear={handleClear}
         allShipsPlaced={allShipsPlaced}
+        handleStart={handleStart} 
       />
 
       <div className="info">
