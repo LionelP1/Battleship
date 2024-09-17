@@ -23,6 +23,10 @@ class Ship {
   getHitCount() {
     return this.hits.length;
   }
+
+  copy() {
+    return new Ship(this.length, this.orientation);
+  }
 }
 
 export default Ship;

@@ -28,8 +28,10 @@ const ShipPlacement = ({ onStartGame }) => {
 
       if (player.gameboard.isValidPlacement(shipLength, orientation, x, y)) {
         // Create a new Player instance with updated gameboard
-        const updatedPlayer = new Player();
-        updatedPlayer.gameboard.board = JSON.parse(JSON.stringify(player.gameboard.board));
+        // const updatedPlayer = new Player();
+        // updatedPlayer.gameboard.board = JSON.parse(JSON.stringify(player.gameboard.board));
+        const updatedPlayer = player.copy();
+
         updatedPlayer.placeShip(shipLength, orientation, x, y);
 
         // Update state

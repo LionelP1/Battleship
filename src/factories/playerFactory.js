@@ -99,6 +99,13 @@ class Player {
     }
   }
 
+  copy() {
+    const newPlayer = new Player(this.name, this.type, this.gameboard.size);
+    newPlayer.gameboard = this.gameboard.copy();
+    newPlayer.ships = this.ships.map(ship => ship.copy());
+    return newPlayer;
+  }
+
 
 }
 

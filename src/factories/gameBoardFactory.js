@@ -96,6 +96,17 @@ class GameBoard {
       Array(this.size).fill(false)
     );
   }
+
+  copy() {
+    const newGameBoard = new GameBoard(this.size);
+    newGameBoard.board = JSON.parse(JSON.stringify(this.board));
+    newGameBoard.attackLocations = JSON.parse(JSON.stringify(this.attackLocations));
+
+    
+    return newGameBoard;
+
+  }
+
 }
 
 export default GameBoard;
