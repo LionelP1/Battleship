@@ -68,8 +68,8 @@ class GameBoard {
   }
 
   receiveAttack(x, y) {
-    // Check if coordinates are within bounds and have not been attacked
-    if (x < 0 || x >= this.size || y < 0 || y >= this.size || this.attackLocations[x][y]) {
+    // Check if coordinates are within bounds
+    if (x < 0 || x >= this.size || y < 0 || y >= this.size) {
       return false;
     }
 
@@ -78,11 +78,9 @@ class GameBoard {
     if (ship !== null) {
       // Ship Hit
       ship.hit(x, y);
-      this.attackLocations[x][y] = true;
       return true;
     } else {
       // Ship Missed
-      this.attackLocations[x][y] = true;
       return false;
     }
   }

@@ -48,7 +48,8 @@ class Player {
 
 
   attack(x, y, opponentGameboard) {
-    if (this.hasAlreadyHit(x, y)) return;
+    if (!this.checkAttackValid(x, y, opponentGameboard)) {return};
+    this.gameboard.attackLocations[x][y] = true;
     opponentGameboard.receiveAttack(x, y);
   }
 
@@ -70,16 +71,23 @@ class Player {
     }
   
     // Check if the location has already been attacked
-    if (gameboard.attackLocations[x][y]) {
+    if (this.gameboard.attackLocations[x][y]) {
       return false;
     }
-  
-    // Check if every location has been hit
-    const hasUnattackedLocation = gameboard.attackLocations.flat().includes(false);
-    if (!hasUnattackedLocation) {
-      return false;
-    }
+
     return true;
+  }
+
+  allShipsSunk() {
+    return this.ships.every(ship => ship.isSunk());
+  }
+
+  allLocationsAttacked() {
+    return this.gameboard.attackLocations.flat().every(location => location);
+  }
+
+  isGameOver() {
+    return this.allShipsSunk() || this.allLocationsAttacked();
   }
 
   resetPlayer() {

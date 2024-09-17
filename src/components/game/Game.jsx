@@ -8,12 +8,45 @@ const generateBotPlayer = () => {
 };
 
 const Game = ({ player }) => {
-  const [bot, setBot] = useState(null);
+	const [bot, setBot] = useState(generateBotPlayer);
+  const [playerState, setPlayerState] = useState(player);
+	const [gameStatus, setGameStatus] = useState('ongoing');
 
-  useEffect(() => {
-    const botPlayer = generateBotPlayer();
-    setBot(botPlayer);
-  }, []);
+	const checkGameOver = () => {
+    if (playerState.allShipsSunk()) {
+      setGameStatus('botWon');
+    } else if (bot.allShipsSunk()) {
+      setGameStatus('playerWon');
+    }
+  };
+
+  const handlePlayerAttack = (x, y) => {
+    if (!playerState.checkAttackValid(x, y, bot.gameboard)) return;
+    const updatedBot = { ...bot };
+    const updatedPlayer = { ...playerState };
+
+    setBot(updatedBot);
+    setPlayerState(updatedPlayer);
+    checkGameOver();
+
+    if (gameStatus === 'ongoing') {
+      botAttackPlayer();
+    }
+  };
+
+	const filler = (x,y) => {
+		console.log('eek');
+	}
+ 
+	const botAttackPlayer = () => {
+		const updatedBot = { ...bot };
+		const updatedPlayer = { ...playerState };
+	
+		updatedBot.randomAttack(updatedPlayer.gameboard);
+	
+		setPlayerState(updatedPlayer);
+		setBot(updatedBot);
+	};
 
   return (
     <div className="game">
@@ -21,17 +54,21 @@ const Game = ({ player }) => {
       <div className="game-boards">
         <div className="player-board">
           <h2>{player.name}'s Board</h2>
-          <Grid player={player} onClick={() => {}} />
+          <Grid player={player} onClick={()=>{}} />
+					<p>Player: {JSON.stringify(playerState)}</p>
         </div>
 
         {/* Bot's grid */}
         <div className="bot-board">
-          <h2>{bot ? bot.name : 'Bot'}'s Board</h2>
-          {bot && <Grid player={bot} onClick={() => {}} />}
-        </div>
+          <h2>{bot.name}'s Board</h2>         
+					<Grid player={bot} onClick={handlePlayerAttack} />
+					<p>Bot: {JSON.stringify(bot)}</p>
+				</div>
       </div>
     </div>
   );
 };
 
 export default Game;
+
+
