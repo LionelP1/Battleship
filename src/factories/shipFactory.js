@@ -7,13 +7,6 @@ class Ship {
 
 
   hit(x, y) {
-    // if (
-    //   this.hits.some(hit => hit.x === x && hit.y === y) ||
-    //   x < 0 || x >= this.length || y < 0 || y >= this.length
-    // ) {
-    //   return;
-    // }
-    console.log('hit');
     this.hits.push({ x, y });
   }
 
@@ -24,6 +17,7 @@ class Ship {
   getHitCount() {
     return this.hits.length;
   }
+
 }
 
 export default Ship;

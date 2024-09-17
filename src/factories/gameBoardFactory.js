@@ -98,6 +98,7 @@ class GameBoard {
       Array(this.size).fill(false)
     );
   }
+
 }
 
 export default GameBoard;

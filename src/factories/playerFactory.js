@@ -101,10 +101,9 @@ class Player {
   copy() {
     const newPlayer = new Player(this.name, this.type, this.gameboard.size);
     newPlayer.gameboard = this.gameboard;
-    newPlayer.ships = this.ships;
+    newPlayer.ships = [...this.ships];
     return newPlayer;
   }
-
 
 }
 
