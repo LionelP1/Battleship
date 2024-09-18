@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import GameManager from './components/game/GameManager';
 import StartMenu from './components/StartMenu';
 
 function App() {
+  const [gameStarted, setGameStarted] = useState(false);
+
+  const handleStartGame = () => {
+    setGameStarted(true);
+  };
+
   return (
-    <div>
-      <h1>Hello</h1>
-      <GameManager />
+    <div className="app">
+      {gameStarted ? (
+        <GameManager />
+      ) : (
+        <StartMenu onStart={handleStartGame} />
+      )}
     </div>
   );
 }
