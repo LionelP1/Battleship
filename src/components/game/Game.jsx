@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Grid from './Grid';
+import Popup from '../Popup';
 import Player from '../../factories/playerFactory';
 
 
@@ -7,7 +8,7 @@ const generateBotPlayer = () => {
   return new Player('Bot Player', 'bot');
 };
 
-const Game = ({ player }) => {
+const Game = ({ player, onGameOver }) => {
 	const [bot, setBot] = useState(generateBotPlayer);
   const [playerState, setPlayerState] = useState(player);
 	const [gameStatus, setGameStatus] = useState('ongoing');
@@ -53,6 +54,7 @@ const Game = ({ player }) => {
 	
 		setPlayerState(updatedPlayer);
 		setBot(updatedBot);
+    checkGameOver();
 	};
 
   return (
@@ -74,11 +76,12 @@ const Game = ({ player }) => {
 				</div>
       </div>
       {(gameStatus === 'playerWon' || gameStatus === 'botWon') && (
-        <Popup 
-          message={gameStatus === 'playerWon' ? 'Congratulations! You Won!' : 'Game Over: Bot Won!'} 
-          onClose={closePopup} 
-        />
-      )}
+      <Popup 
+      message = {gameStatus === 'playerWon' ? 'You Won!' : 'Bot Won!'} 
+      picture = {gameStatus === 'playerWon' ? '🏆 ' : '🤖'} 
+      onClose = {onGameOver} 
+      />
+  )}
     </div>
   );
 };

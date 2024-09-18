@@ -11,12 +11,18 @@ const GameManager = () => {
     setGameStarted(true);
   };
 
+  const handleResetGame = () => {
+    setGameStarted(false);
+    setPlayer(null);
+  };
+
+
   return (
     <div className="game-setup">
       {!gameStarted ? (
         <ShipPlacement onStartGame={handleStartGame} />
       ) : (
-        <Game player={player} />
+        <Game player={player} onGameOver={handleResetGame} />
       )}
     </div>
   );
