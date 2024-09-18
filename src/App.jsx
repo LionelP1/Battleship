@@ -1,10 +1,7 @@
 import React from 'react';
 import './App.css';
-// import Grid from './components/game/Grid';
-import ShipButtons from './components/game/ShipButtons';
-import ShipPlacement from './components/game/ShipPlacement';
 import GameManager from './components/game/GameManager';
-
+import StartMenu from './components/StartMenu';
 
 function App() {
   return (
