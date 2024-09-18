@@ -73,6 +73,12 @@ const Game = ({ player }) => {
 					<p>Bot: {JSON.stringify(bot)}</p>
 				</div>
       </div>
+      {(gameStatus === 'playerWon' || gameStatus === 'botWon') && (
+        <Popup 
+          message={gameStatus === 'playerWon' ? 'Congratulations! You Won!' : 'Game Over: Bot Won!'} 
+          onClose={closePopup} 
+        />
+      )}
     </div>
   );
 };
