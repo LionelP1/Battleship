@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Grid from './Grid';
 import Popup from '../Popup';
 import Player from '../../factories/playerFactory';
+import '../../styles/game.css';
 
 
 const generateBotPlayer = () => {
@@ -59,15 +60,14 @@ const Game = ({ player, onGameOver }) => {
 
   return (
     <div className="game">
-      <h1>Battleship Game</h1>
-      <p>{gameStatus}</p>
+      <h1 className="game-title">Battleship Game</h1>
       <div className="game-boards">
         <div className="player-board">
-          <h2>{player.name}'s Board</h2>
+          <h2 className="game-board-name">{playerState.name}'s Board</h2>   
           <Grid player={playerState} onClick={()=>{}} />
         </div>
         <div className="bot-board">
-          <h2>{bot.name}'s Board</h2>         
+          <h2 className="game-board-name">{bot.name}'s Board</h2>         
 					<Grid player={bot} onClick={handlePlayerAttack} />
 				</div>
       </div>

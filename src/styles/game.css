@@ -1,0 +1,37 @@
+.game {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	flex-direction: column;
+	padding: 20px;
+}
+
+.game-title {
+	margin: 10px 0;
+	padding: 0;
+	font-size: 50px;
+	padding:10px 55px;
+	color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+	text-align: center;
+	border-radius: 10px;
+	width: fit-content;
+}
+
+.game-board-name {
+	margin: 10px 0;
+	padding: 0;
+	font-size: 35px;
+}
+
+.game-boards {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.player-board, .bot-board {
+	padding: 10px;
+	border-radius: 5px;
+}

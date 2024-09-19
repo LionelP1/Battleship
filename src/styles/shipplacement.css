@@ -18,7 +18,7 @@
 
 .ship-placement-container {
 	display: flex;
-	justify-content: space-between;
+	align-items: center;
 	background-color: #31363a;
 	background-color: rgba(0, 0, 0, 0.5);
 	padding:50px;
