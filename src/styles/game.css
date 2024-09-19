@@ -35,3 +35,42 @@
 	padding: 10px;
 	border-radius: 5px;
 }
+
+@media (max-width: 1200px) {
+	.game-boards {
+		flex-direction: column;
+	}
+
+  
+}
+
+@media (max-width: 750px) {
+	.game-boards {
+		flex-direction: column;
+	}
+
+	.game-title {
+		font-size: 35px;
+	}
+	
+	.game-board-name {
+		font-size: 25px;
+	}
+  
+}
+
+@media (max-width: 500px) {
+	.game-boards {
+		flex-direction: column;
+	}
+
+	.game-title {
+		font-size: 20px;
+		width: 150px;
+	}
+	
+	.game-board-name {
+		font-size: 18px;
+	}
+  
+}

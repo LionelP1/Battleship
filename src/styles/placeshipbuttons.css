@@ -44,3 +44,19 @@
   background-color: #f0f0f0;
   transform: none;
 }
+
+
+@media (max-width: 1200px) {
+  .button-grid {
+    margin-top: 0;
+    margin-left: 20px;
+  }
+
+}
+
+@media (max-width: 750px) {
+  .button-grid {
+    margin: 0;
+  }
+
+}

@@ -9,7 +9,7 @@
 	margin: 30px 0;
 	padding: 0;
 	font-size: 50px;
-	padding:10px 55px;
+	padding: 10px 45px;
 	color: white;
   background-color: rgba(0, 0, 0, 0.5);
 	text-align: center;
@@ -21,7 +21,7 @@
 	align-items: center;
 	background-color: #31363a;
 	background-color: rgba(0, 0, 0, 0.5);
-	padding:50px;
+	padding: 40px;
 	border-radius: 30px;
 	margin-bottom: 50px;
 }
@@ -32,5 +32,53 @@
 	flex-direction: column;
 	justify-content: space-between;
 	margin-left: 30px;
+}
+
+
+
+@media (max-width: 1200px) {
+	.ship-options {
+		flex-direction: row;
+		margin: 0 auto;
+		padding: 20px;
+	}
+
+	.ship-placement-container {
+		flex-direction: column;		
+	}
+
+}
+
+
+@media (max-width: 750px) {
+	.ship-placement-container {
+		padding: 40px;
+		border-radius: 30px;
+		margin-bottom: 50px;
+		margin: 0 90%;
+	}
+	.ship-options {
+		flex-direction: column;
+		gap:10px;
+	}
+
+}
+
+@media (max-width: 500px) {
+	.ship-placement-title {
+		font-size: 30px;
+	}
+
+	.ship-placement-container {
+		border-radius: 30px;
+		margin: 0;
+		padding: 0;
+		padding-top: 20px;
+	}
+	.ship-options {
+		flex-direction: column;
+		gap:10px;
+	}
+
 }
 

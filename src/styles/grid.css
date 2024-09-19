@@ -11,9 +11,9 @@
 
 .grid {
   display: grid;
+  padding: 20px;
   grid-template-columns: repeat(10, 47px);
   grid-template-rows: repeat(10, 47px);
-  padding: 20px;
 }
 
 .cell {
@@ -24,8 +24,6 @@
   border: 1px solid #ccc;
   box-sizing: border-box;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
   transition: background-color 0.5s;
   margin: -1px;
 }
@@ -40,4 +38,42 @@
 
 .cell.ship {
   background-color: #2965dd;
+}
+
+@media (max-width: 750px) {
+  .grid-wrapper {
+    width: 400px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(10, 35px);
+    grid-template-rows: repeat(10, 35px);
+    padding: 10px;
+  }
+
+  .grid-wrapper {
+    padding: 20px 10px;
+
+  }
+
+}
+
+@media (max-width: 500px) {
+  .grid-wrapper {
+    width: 270px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(10, 25px);
+    grid-template-rows: repeat(10, 25px);
+    padding: 10px;
+  }
+
+  .grid-wrapper {
+    padding: 10px;
+
+  }
+
 }
