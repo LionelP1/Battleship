@@ -13,9 +13,13 @@ function App() {
   return (
     <div className="app">
       {gameStarted ? (
-        <GameManager />
+        <div className="game-wrapper">
+          <GameManager />
+        </div>
       ) : (
-        <StartMenu onStart={handleStartGame} />
+        <div className="start-menu-wrapper">
+          <StartMenu onStart={handleStartGame} />
+        </div>
       )}
     </div>
   );

@@ -1,16 +1,13 @@
 body, html {
-	/* height: 100%; */
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+
 body {
 	background: url('../src/assets/background.jpg') no-repeat center center fixed;
 	background-size: cover;
 	color: white;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	overflow: hidden;
+	/* height: 100vh; */
+	/* overflow: hidden; */
 }
 
 .start-menu {
@@ -25,28 +22,28 @@ body {
   margin: 0 20px;
 }
 .start-title {
-    font-size: 6.7rem;
-    color: #ffffff;
-    margin: 0;
-    margin-bottom: -5px;
-    padding: 0;
-    -webkit-text-stroke-color: #000000;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    user-select: none;
+  font-size: 6.7rem;
+  color: #ffffff;
+  margin: 0;
+  margin-bottom: -5px;
+  padding: 0;
+  -webkit-text-stroke-color: #000000;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  user-select: none;
 }
 
 .sub-title {
-    font-size: 1.5rem;
-    color: rgb(255, 255, 255);
-    border-radius: 10px;
-    background-color: #C8102E;
-    margin: 10px 0;
-    margin-bottom: 20px;
-    padding: 5px 15px;
-    letter-spacing: 1px;
-    user-select: none;
-		white-space: nowrap;
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  background-color: #C8102E;
+  margin: 10px 0;
+  margin-bottom: 20px;
+  padding: 5px 15px;
+  letter-spacing: 1px;
+  user-select: none;
+	white-space: nowrap;
 }
 
 .start-button {
@@ -94,15 +91,15 @@ body {
 
 @media (max-width: 430px) {
 	.start-title {
-			font-size: 3rem;
-			margin: 0;
+		font-size: 3rem;
+		margin: 0;
 	}
 
 	.sub-title {
-			font-size: 0.7rem;
-			padding: 2px 5px;
-			border-radius: 8px;
-			white-space: wrap;
+		font-size: 0.7rem;
+		padding: 2px 5px;
+		border-radius: 8px;
+		white-space: wrap;
 	}
 
 	.start-button {

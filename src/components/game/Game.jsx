@@ -65,14 +65,10 @@ const Game = ({ player, onGameOver }) => {
         <div className="player-board">
           <h2>{player.name}'s Board</h2>
           <Grid player={playerState} onClick={()=>{}} />
-					<p>Player: {JSON.stringify(playerState)}</p>
         </div>
-
-        {/* Bot's grid */}
         <div className="bot-board">
           <h2>{bot.name}'s Board</h2>         
 					<Grid player={bot} onClick={handlePlayerAttack} />
-					<p>Bot: {JSON.stringify(bot)}</p>
 				</div>
       </div>
       {(gameStatus === 'playerWon' || gameStatus === 'botWon') && (

@@ -1,0 +1,29 @@
+.ship-placement {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* background-color: rgba(0, 0, 0, 0.7);
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8); */
+	border-radius: 20px;
+	/* width:60%; */
+}
+
+.ship-placement-title {
+	margin: 30px 0;
+	padding: 0;
+	font-size: 50px;
+
+}
+
+.ship-placement-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+
+.ship-options {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+

@@ -10,6 +10,7 @@ const PlaceShipsButtons = ({ orientation, setOrientation, handleClear, allShipsP
 
   return (
     <div className="button-grid">
+      <h2 className="button-grid-title">Buttons</h2>
       <button className="orientation-btn" onClick={toggleOrientation}>
         {orientation === 'h' ? 'Horizontal ↔' : 'Vertical ↕'}
       </button>

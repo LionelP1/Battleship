@@ -25,8 +25,7 @@ const Grid = ({ player, onClick }) => {
               key={`${x},${y}`}
               className={cellClasses.join(' ')}
               onClick={() => onClick(x, y)}
-            >
-              {`${x},${y}`}
+              >
             </div>
           );
         })

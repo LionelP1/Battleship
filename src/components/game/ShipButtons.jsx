@@ -5,6 +5,7 @@ import '../../styles/shipbuttons.css';
 const ShipButtons = ({ selectedShip, setSelectedShip, availableShips }) => {
   return (
     <div className="ship-grid">
+      <h3 className="ship-button-title">SHIPS</h3>
       {shipConfig.map((ship) => (
         <div
           key={ship.id}

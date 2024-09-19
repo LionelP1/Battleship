@@ -4,7 +4,7 @@ import PlaceShipsButtons from './PlaceShipsButtons';
 import shipConfig from '../../config/shipConfig';
 import Player from '../../factories/playerFactory';
 import Grid from './Grid';
-// import '../../styles/shipplacement.css';
+import '../../styles/shipplacement.css';
 
 // Function to initialize available ships based on shipConfig
 const initializeShips = () => {
@@ -59,30 +59,42 @@ const ShipPlacement = ({ onStartGame }) => {
     }
   };
 
+  // return (
+  //   <div className="ship-placement">
+  //     <h2 className="ship-placement-title">Place Your Ships</h2>
+  //     <Grid player={player} onClick={handlePlaceShip} />
+  //     <ShipButtons selectedShip={selectedShip} setSelectedShip={setSelectedShip} availableShips={availableShips} />
+  //     <PlaceShipsButtons
+  //       orientation={orientation}
+  //       setOrientation={setOrientation}
+  //       handleClear={handleClear}
+  //       allShipsPlaced={allShipsPlaced}
+  //       handleStart={handleStart} 
+  //     />
+  //   </div>
+  // );
   return (
-    <div className="ship-placement">
-      <ShipButtons selectedShip={selectedShip} setSelectedShip={setSelectedShip} availableShips={availableShips} />
-      <PlaceShipsButtons
-        orientation={orientation}
-        setOrientation={setOrientation}
-        handleClear={handleClear}
-        allShipsPlaced={allShipsPlaced}
-        handleStart={handleStart} 
-      />
-
-      <div className="info">
-        <p>Info</p>
-        <p>Selected Ship: {JSON.stringify(selectedShip)}</p>
-        <p>Orientation: {orientation}</p>
-        <p>Available Ships: {JSON.stringify(availableShips)}</p>
-        <p>Player: {JSON.stringify(player)}</p>
-      </div>
-
+  <div className="ship-placement">
+    <h2 className="ship-placement-title">Place Your Ships</h2>
+    <div className="ship-placement-container">
       <Grid player={player} onClick={handlePlaceShip} />
-
-
+      <div className="ship-options">
+        <ShipButtons
+          selectedShip={selectedShip}
+          setSelectedShip={setSelectedShip}
+          availableShips={availableShips}
+        />
+        <PlaceShipsButtons
+          orientation={orientation}
+          setOrientation={setOrientation}
+          handleClear={handleClear}
+          allShipsPlaced={allShipsPlaced}
+          handleStart={handleStart}
+        />
+      </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default ShipPlacement;

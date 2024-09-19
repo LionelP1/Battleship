@@ -1,15 +1,26 @@
 .ship-grid {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin: 20px;
+  background-color: #1c1c1e;
+  border:black 2px solid;
+  align-items: left;
+  text-align: center;
+  padding:15px;
+  border-radius: 30px;
+}
+
+.ship-button-title{
+  font-size: 30px;
+  padding: 0;
+  margin: 0;
 }
 
 .ship-container {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px;
+  gap: 20px;
+  padding: 5px;
+
 }
 
 .ship-count {
@@ -22,17 +33,18 @@
 }
 
 .ship-container.selected {
-  background-color: #cdc6c6; 
-  border-color: #0033cc;
+  background-color: #6e6e6e;
 }
 
 .ship-square {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   background-color: #2965dd;
   border: 3px solid #00247f;
   box-sizing: border-box;
 }
+
+
 
 .ship-square:not(:last-child) {
   margin-right: -3px;

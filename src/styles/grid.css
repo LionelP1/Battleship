@@ -1,20 +1,25 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(10, 40px);
-  grid-template-rows: repeat(10, 40px);
-  gap: 2px;
+  grid-template-columns: repeat(10, 47px);
+  grid-template-rows: repeat(10, 47px);
+  background-color: #1c1c1e;
+  border-radius: 30px;
+  padding: 20px;
+  margin-left: 20px;
 }
 
 .cell {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #eee;
+  background-color: #3e3e3e;
   border: 1px solid #ccc;
+  box-sizing: border-box;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
   transition: background-color 0.5s;
+  margin: -1px;
 }
 
 .cell.hit {
@@ -26,6 +31,5 @@
 }
 
 .cell.ship {
-  /* background-color: rgb(20, 19, 19); */
-  border: solid green 2px;
+  background-color: #2965dd;
 }

@@ -1,42 +1,41 @@
 /* Button grid layout */
 .button-grid {
   display: flex;
-  justify-content: center;
-  gap: 15px;
+  align-items: center;
+  flex-direction: column;
+  gap: 7px;
   margin-top: 20px;
+  background-color: #1c1c1e;
+  border:black 2px solid;
+  padding:20px;
+  border-radius: 30px;
 }
+
+.button-grid-title {
+  font-size: 30px;
+  padding: 0;
+  margin: 0;
+}
+
 
 .orientation-btn, 
 .clear-btn, 
 .start-btn {
-  padding: 12px 24px;
+  padding: 8px 24px;
   border: 2px solid #333;
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
   border-radius: 8px;
-  width:200px;
+  width: 250px;
+  background-color: #333;
+  color: white;
 }
 
 .orientation-btn:hover,
 .clear-btn:hover,
 .start-btn:hover {
-  transform: scale(1.05);
-}
-
-.orientation-btn {
-  color: #0066cc;
-  border-color: #0066cc;
-}
-
-.clear-btn {
-  color: #ff0000;
-  border-color: #ff0000;
-}
-
-.start-btn {
-  color: #28a745;
-  border-color: #28a745;
+  transform: scale(1.03);
 }
 
 .start-btn:disabled {
