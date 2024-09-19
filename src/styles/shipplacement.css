@@ -2,22 +2,28 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	/* background-color: rgba(0, 0, 0, 0.7);
-	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8); */
 	border-radius: 20px;
-	/* width:60%; */
 }
 
 .ship-placement-title {
 	margin: 30px 0;
 	padding: 0;
 	font-size: 50px;
-
+	padding:10px 55px;
+	color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+	text-align: center;
+	border-radius: 10px;
 }
 
 .ship-placement-container {
 	display: flex;
 	justify-content: space-between;
+	background-color: #31363a;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding:50px;
+	border-radius: 30px;
+	margin-bottom: 50px;
 }
 
 
@@ -25,5 +31,6 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	margin-left: 30px;
 }
 

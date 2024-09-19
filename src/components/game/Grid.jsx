@@ -3,10 +3,11 @@ import '../../styles/grid.css';
 
 const Grid = ({ player, onClick }) => {
   const { board, attackLocations } = player.gameboard;
-  const isBot = (player.type === 'botq');
+  const isBot = (player.type === 'bot');
 
   return (
-    <div className="grid">
+    <div className="grid-wrapper">
+      <div className="grid">
       {board[0].map((_, y) => (  // Iterate over columns
         board.map((row, x) => {  // Iterate over rows
           const cell = row[y];
@@ -19,7 +20,6 @@ const Grid = ({ player, onClick }) => {
           } else if (!isBot && hasShip) {
             cellClasses.push('ship');
           }
-
           return (
             <div
               key={`${x},${y}`}
@@ -30,7 +30,9 @@ const Grid = ({ player, onClick }) => {
           );
         })
       ))}
+      </div>
     </div>
+
   );
 };
 

@@ -13,12 +13,12 @@ body {
 .start-menu {
   display: flex;
   flex-direction: column;
-	text-align: center;
+  text-align: center;
   align-items: center;
-	background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
-	padding: 40px;
-	border-radius: 10px;
+  padding: 40px;
+  border-radius: 10px;
   margin: 0 20px;
 }
 .start-title {

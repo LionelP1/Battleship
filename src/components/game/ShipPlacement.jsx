@@ -59,20 +59,6 @@ const ShipPlacement = ({ onStartGame }) => {
     }
   };
 
-  // return (
-  //   <div className="ship-placement">
-  //     <h2 className="ship-placement-title">Place Your Ships</h2>
-  //     <Grid player={player} onClick={handlePlaceShip} />
-  //     <ShipButtons selectedShip={selectedShip} setSelectedShip={setSelectedShip} availableShips={availableShips} />
-  //     <PlaceShipsButtons
-  //       orientation={orientation}
-  //       setOrientation={setOrientation}
-  //       handleClear={handleClear}
-  //       allShipsPlaced={allShipsPlaced}
-  //       handleStart={handleStart} 
-  //     />
-  //   </div>
-  // );
   return (
   <div className="ship-placement">
     <h2 className="ship-placement-title">Place Your Ships</h2>
