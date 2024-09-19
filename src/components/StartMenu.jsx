@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../styles/startmenu.css';
 const StartMenu = ({ onStart }) => {
   return (
     <div className="start-menu">
