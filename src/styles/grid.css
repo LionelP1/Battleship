@@ -1,13 +1,13 @@
 .grid-wrapper {
   padding: 20px;
   background-color: #1c1c1e;
+  border:black 2px solid;
 	border-radius: 30px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
   width: 520px;
 }
-
 
 .grid {
   display: grid;
