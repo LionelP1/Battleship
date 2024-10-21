@@ -1,3 +1,13 @@
+.app {
+    background: url('./assets/background.jpg') no-repeat center center fixed; /* Use './assets/' instead of '../src/assets/' */
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .start-menu-wrapper {
 	display: flex;
 	justify-content: center;
